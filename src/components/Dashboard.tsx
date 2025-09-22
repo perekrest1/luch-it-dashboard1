@@ -1,7 +1,6 @@
 "use client";
 
 import useSWR from "swr";
-import { Card, CardContent } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
@@ -18,21 +17,21 @@ export default function Dashboard() {
 
   return (
     <div className="grid gap-6">
-      <Card className="p-4">
-        <CardContent>
-          <h2 className="text-lg font-semibold mb-4">Менеджеры</h2>
-          <ResponsiveContainer width="100%" height={300}>
+      <div className="rounded-2xl border bg-white p-4 shadow-sm">
+        <h2 className="mb-4 text-lg font-semibold">Менеджеры</h2>
+        <div style={{ width: "100%", height: 300 }}>
+          <ResponsiveContainer>
             <BarChart data={data.managers}>
               <XAxis dataKey="manager" />
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="expected" fill="#8884d8" name="Ожидается" />
-              <Bar dataKey="signed" fill="#82ca9d" name="Подписано" />
+              <Bar dataKey="expected" name="Ожидается" />
+              <Bar dataKey="signed" name="Подписано" />
             </BarChart>
           </ResponsiveContainer>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

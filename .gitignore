@@ -5,3 +5,8 @@ dist
 .DS_Store
 .env
 .env.local
+
+# Editor swap/temp files
+*.swp
+*.swo
+.DS_Store
